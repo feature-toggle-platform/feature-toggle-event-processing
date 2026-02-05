@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Transactional;
 import pl.feature.toggle.service.event.processing.api.EventProcessor;
-import pl.feature.toggle.service.event.processing.api.IntegrationEvent;
+import pl.feature.toggle.service.contracts.shared.IntegrationEvent;
 import pl.feature.toggle.service.event.processing.api.ProcessedEventRepository;
 
 import java.util.function.Consumer;
