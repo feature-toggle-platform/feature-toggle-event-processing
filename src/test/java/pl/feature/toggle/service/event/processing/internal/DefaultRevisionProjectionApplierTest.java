@@ -161,7 +161,7 @@ class DefaultRevisionProjectionApplierTest {
         void apply(Revision incoming) {
             var plan = RevisionProjectionPlan.<RefStub>forIncoming(incoming)
                     .findCurrentUsing(() -> Optional.ofNullable(current))
-                    .insertWhenMissing(() -> insertCalls++)
+                    .onMissing(() -> insertCalls++)
                     .extractCurrentRevisionUsing(RefStub::lastRevision)
                     .applyUpdateWhenApplicable(__ -> updateCalls++)
                     .markInconsistentWhenGapDetectedIfNotMarked(() -> {
