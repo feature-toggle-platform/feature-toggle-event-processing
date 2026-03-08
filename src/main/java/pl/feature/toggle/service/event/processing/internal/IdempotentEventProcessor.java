@@ -19,6 +19,25 @@ class IdempotentEventProcessor implements EventProcessor {
     @Override
     @Transactional
     public <T extends IntegrationEvent> void process(T event, Consumer<T> action, Runnable afterSuccessAction) {
+        processInternal(event, action, afterSuccessAction, () -> {});
+    }
+
+    @Transactional
+    public <T extends IntegrationEvent> void process(
+            T event,
+            Consumer<T> action,
+            Runnable afterSuccessAction,
+            Runnable confirmAction
+    ) {
+        processInternal(event, action, afterSuccessAction, confirmAction);
+    }
+
+    private <T extends IntegrationEvent> void processInternal(
+            T event,
+            Consumer<T> action,
+            Runnable afterSuccessAction,
+            Runnable confirmAction
+    ) {
         log.info("Received integration event: {}", event);
 
         if (!TransactionSynchronizationManager.isActualTransactionActive()) {
@@ -28,11 +47,14 @@ class IdempotentEventProcessor implements EventProcessor {
         if (!processedEvents.tryMarkProcessed(event.eventId())) {
             log.info("Integration event {} already processed – skipping", event.eventId());
             AfterCommit.run(afterSuccessAction);
+            AfterCommit.run(confirmAction);
             return;
         }
 
         action.accept(event);
+
         AfterCommit.run(afterSuccessAction);
+        AfterCommit.run(confirmAction);
 
         log.info("Integration event {} processed", event.eventId());
     }
