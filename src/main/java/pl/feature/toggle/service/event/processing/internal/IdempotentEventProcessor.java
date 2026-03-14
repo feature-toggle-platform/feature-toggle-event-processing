@@ -41,7 +41,7 @@ class IdempotentEventProcessor implements EventProcessor {
         log.info("Received integration event: {}", event);
 
         if (!TransactionSynchronizationManager.isActualTransactionActive()) {
-            throw new IllegalStateException("Event processing must run in a transaction");
+            log.warn("Event processing is running without active transaction");
         }
 
         if (!processedEvents.tryMarkProcessed(event.eventId())) {
