@@ -12,7 +12,7 @@ import java.util.function.Consumer;
 
 @Slf4j
 @RequiredArgsConstructor
-class IdempotentEventProcessor implements EventProcessor {
+class TransactionalIdempotentEventProcessor implements EventProcessor {
 
     private final ProcessedEventRepository processedEvents;
 
@@ -47,7 +47,6 @@ class IdempotentEventProcessor implements EventProcessor {
         if (!processedEvents.tryMarkProcessed(event.eventId())) {
             log.info("Integration event {} already processed – skipping", event.eventId());
             AfterCommit.run(afterSuccessAction);
-            AfterCommit.run(confirmAction);
             return;
         }
 
