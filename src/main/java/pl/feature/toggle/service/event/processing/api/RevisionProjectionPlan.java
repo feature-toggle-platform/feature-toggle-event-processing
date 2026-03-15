@@ -2,6 +2,7 @@ package pl.feature.toggle.service.event.processing.api;
 
 import lombok.Getter;
 import lombok.experimental.Accessors;
+import pl.feature.toggle.service.contracts.shared.EventId;
 import pl.feature.toggle.service.model.Revision;
 
 import java.util.Optional;
@@ -14,6 +15,7 @@ import java.util.function.Supplier;
 @Accessors(fluent = true)
 public final class RevisionProjectionPlan<T> {
 
+    final EventId eventId;
     final Revision incoming;
     final Supplier<Optional<T>> findCurrent;
 
@@ -32,6 +34,7 @@ public final class RevisionProjectionPlan<T> {
         this.update = builder.update;
         this.markInconsistentIfNotMarked = builder.markInconsistentIfNotMarked;
         this.publishRebuild = builder.publishRebuild;
+        this.eventId = builder.eventId;
     }
 
     public static <T> Builder<T> forIncoming(Revision incoming) {
@@ -41,6 +44,7 @@ public final class RevisionProjectionPlan<T> {
     public static final class Builder<T> {
 
         private final Revision incoming;
+        private EventId eventId;
 
         private Supplier<Optional<T>> findCurrent;
 
@@ -62,6 +66,11 @@ public final class RevisionProjectionPlan<T> {
 
         public Builder<T> onMissing(Runnable action) {
             this.onMissing = action;
+            return this;
+        }
+
+        public Builder<T> eventId(EventId eventId) {
+            this.eventId = eventId;
             return this;
         }
 
@@ -92,6 +101,7 @@ public final class RevisionProjectionPlan<T> {
             require(markInconsistentIfNotMarked, "markInconsistentWhenGapDetectedIfNotMarked");
             require(publishRebuild, "publishRebuildWhenGapDetected");
             require(onMissing, "onMissing");
+            require(eventId, "eventId");
 
             return new RevisionProjectionPlan<>(this);
         }
