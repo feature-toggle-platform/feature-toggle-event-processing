@@ -1,6 +1,7 @@
 package pl.feature.toggle.service.event.processing.internal;
 
 import org.junit.jupiter.api.Test;
+import pl.feature.toggle.service.contracts.shared.EventId;
 import pl.feature.toggle.service.event.processing.api.RevisionProjectionApplier;
 import pl.feature.toggle.service.event.processing.api.RevisionProjectionPlan;
 import pl.feature.toggle.service.model.Revision;
@@ -85,7 +86,7 @@ class DefaultRevisionProjectionApplierTest {
         // given
         var current = new RefStub(Revision.from(2));
         var fx = Fixture.existing(current).markReturns(true);
-        var incoming = Revision.from(5); // gap > next
+        var incoming = Revision.from(5);
 
         // when
         fx.apply(incoming);
@@ -102,7 +103,7 @@ class DefaultRevisionProjectionApplierTest {
         // given
         var current = new RefStub(Revision.from(2));
         var fx = Fixture.existing(current).markReturns(false);
-        var incoming = Revision.from(5); // gap > next
+        var incoming = Revision.from(5);
 
         // when
         fx.apply(incoming);
@@ -114,7 +115,6 @@ class DefaultRevisionProjectionApplierTest {
         fx.assertNoPublish();
     }
 
-// ===== fixture =====
 
     private static final class RefStub {
         private final Revision lastRevision;
@@ -160,6 +160,7 @@ class DefaultRevisionProjectionApplierTest {
 
         void apply(Revision incoming) {
             var plan = RevisionProjectionPlan.<RefStub>forIncoming(incoming)
+                    .eventId(EventId.create())
                     .findCurrentUsing(() -> Optional.ofNullable(current))
                     .onMissing(() -> insertCalls++)
                     .extractCurrentRevisionUsing(RefStub::lastRevision)
