@@ -3,6 +3,7 @@ package pl.feature.toggle.service.event.processing.internal;
 import lombok.extern.slf4j.Slf4j;
 import pl.feature.toggle.service.event.processing.api.RevisionProjectionApplier;
 import pl.feature.toggle.service.event.processing.api.RevisionProjectionPlan;
+import pl.feature.toggle.service.event.processing.internal.exception.RevisionProjectionApplierException;
 
 @Slf4j
 public final class DefaultRevisionProjectionApplier implements RevisionProjectionApplier {
@@ -83,8 +84,6 @@ public final class DefaultRevisionProjectionApplier implements RevisionProjectio
                 currentRev
         );
 
-        throw new IllegalStateException(
-                "Unhandled revision transition. Incoming revision: " + plan.incoming() + ", current revision: " + currentRev
-        );
+        throw new RevisionProjectionApplierException(plan.incoming(), currentRev);
     }
 }
