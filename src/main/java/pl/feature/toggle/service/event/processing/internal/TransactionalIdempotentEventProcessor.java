@@ -8,7 +8,7 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 import pl.feature.toggle.service.event.processing.api.EventProcessor;
 import pl.feature.toggle.service.contracts.shared.IntegrationEvent;
 import pl.feature.toggle.service.event.processing.api.ProcessedEventRepository;
-import pl.feature.toggle.service.model.security.correlation.CorrelationId;
+import pl.feature.toggle.service.web.correlation.CorrelationId;
 
 import java.util.function.Consumer;
 

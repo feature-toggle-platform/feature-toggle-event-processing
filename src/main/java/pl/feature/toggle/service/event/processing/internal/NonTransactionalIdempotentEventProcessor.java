@@ -3,13 +3,10 @@ package pl.feature.toggle.service.event.processing.internal;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.support.TransactionSynchronizationManager;
 import pl.feature.toggle.service.contracts.shared.IntegrationEvent;
 import pl.feature.toggle.service.event.processing.api.EventProcessor;
 import pl.feature.toggle.service.event.processing.api.NonTransactionalProcessedEventRepository;
-import pl.feature.toggle.service.event.processing.api.ProcessedEventRepository;
-import pl.feature.toggle.service.model.security.correlation.CorrelationId;
+import pl.feature.toggle.service.web.correlation.CorrelationId;
 
 import java.util.function.Consumer;
 
