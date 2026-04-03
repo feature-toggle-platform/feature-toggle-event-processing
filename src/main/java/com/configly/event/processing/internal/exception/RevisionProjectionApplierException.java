@@ -1,6 +1,6 @@
-package pl.feature.toggle.service.event.processing.internal.exception;
+package com.configly.event.processing.internal.exception;
 
-import pl.feature.toggle.service.model.Revision;
+import com.configly.model.Revision;
 
 public class RevisionProjectionApplierException extends RuntimeException {
     public RevisionProjectionApplierException(Revision incoming, Revision current) {

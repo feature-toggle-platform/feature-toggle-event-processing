@@ -1,4 +1,4 @@
-package pl.feature.toggle.service.event.processing.internal;
+package com.configly.event.processing.internal;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

@@ -1,14 +1,14 @@
-package pl.feature.toggle.service.event.processing.internal;
+package com.configly.event.processing.internal;
 
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
-import pl.feature.toggle.service.event.processing.api.EventProcessor;
-import pl.feature.toggle.service.event.processing.api.NonTransactionalProcessedEventRepository;
-import pl.feature.toggle.service.event.processing.api.ProcessedEventRepository;
-import pl.feature.toggle.service.event.processing.api.RevisionProjectionApplier;
+import com.configly.event.processing.api.EventProcessor;
+import com.configly.event.processing.api.NonTransactionalProcessedEventRepository;
+import com.configly.event.processing.api.ProcessedEventRepository;
+import com.configly.event.processing.api.RevisionProjectionApplier;
 
 @AutoConfiguration
 class EventProcessingAutoConfiguration {

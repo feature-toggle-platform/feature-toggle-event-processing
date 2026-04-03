@@ -1,10 +1,10 @@
-package pl.feature.toggle.service.event.processing.internal;
+package com.configly.event.processing.internal;
 
 import org.junit.jupiter.api.Test;
-import pl.feature.toggle.service.contracts.shared.EventId;
-import pl.feature.toggle.service.event.processing.api.RevisionProjectionApplier;
-import pl.feature.toggle.service.event.processing.api.RevisionProjectionPlan;
-import pl.feature.toggle.service.model.Revision;
+import com.configly.contracts.shared.EventId;
+import com.configly.event.processing.api.RevisionProjectionApplier;
+import com.configly.event.processing.api.RevisionProjectionPlan;
+import com.configly.model.Revision;
 
 import java.util.Optional;
 

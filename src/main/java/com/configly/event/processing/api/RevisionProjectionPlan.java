@@ -1,9 +1,9 @@
-package pl.feature.toggle.service.event.processing.api;
+package com.configly.event.processing.api;
 
 import lombok.Getter;
 import lombok.experimental.Accessors;
-import pl.feature.toggle.service.contracts.shared.EventId;
-import pl.feature.toggle.service.model.Revision;
+import com.configly.contracts.shared.EventId;
+import com.configly.model.Revision;
 
 import java.util.Optional;
 import java.util.function.BooleanSupplier;

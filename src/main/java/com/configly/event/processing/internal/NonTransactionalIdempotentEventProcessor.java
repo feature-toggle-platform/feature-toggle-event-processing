@@ -1,12 +1,12 @@
-package pl.feature.toggle.service.event.processing.internal;
+package com.configly.event.processing.internal;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
-import pl.feature.toggle.service.contracts.shared.IntegrationEvent;
-import pl.feature.toggle.service.event.processing.api.EventProcessor;
-import pl.feature.toggle.service.event.processing.api.NonTransactionalProcessedEventRepository;
-import pl.feature.toggle.service.web.correlation.CorrelationId;
+import com.configly.contracts.shared.IntegrationEvent;
+import com.configly.event.processing.api.EventProcessor;
+import com.configly.event.processing.api.NonTransactionalProcessedEventRepository;
+import com.configly.web.correlation.CorrelationId;
 
 import java.util.function.Consumer;
 

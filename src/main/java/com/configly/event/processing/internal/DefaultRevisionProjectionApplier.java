@@ -1,9 +1,9 @@
-package pl.feature.toggle.service.event.processing.internal;
+package com.configly.event.processing.internal;
 
 import lombok.extern.slf4j.Slf4j;
-import pl.feature.toggle.service.event.processing.api.RevisionProjectionApplier;
-import pl.feature.toggle.service.event.processing.api.RevisionProjectionPlan;
-import pl.feature.toggle.service.event.processing.internal.exception.RevisionProjectionApplierException;
+import com.configly.event.processing.api.RevisionProjectionApplier;
+import com.configly.event.processing.api.RevisionProjectionPlan;
+import com.configly.event.processing.internal.exception.RevisionProjectionApplierException;
 
 @Slf4j
 public final class DefaultRevisionProjectionApplier implements RevisionProjectionApplier {

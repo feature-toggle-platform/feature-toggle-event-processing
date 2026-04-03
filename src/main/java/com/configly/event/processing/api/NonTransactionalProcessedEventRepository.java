@@ -1,6 +1,6 @@
-package pl.feature.toggle.service.event.processing.api;
+package com.configly.event.processing.api;
 
-import pl.feature.toggle.service.contracts.shared.EventId;
+import com.configly.contracts.shared.EventId;
 
 public interface NonTransactionalProcessedEventRepository {
     boolean tryStartProcessing(EventId eventId);

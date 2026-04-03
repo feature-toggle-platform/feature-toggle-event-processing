@@ -1,6 +1,6 @@
-package pl.feature.toggle.service.event.processing.api;
+package com.configly.event.processing.api;
 
-import pl.feature.toggle.service.contracts.shared.IntegrationEvent;
+import com.configly.contracts.shared.IntegrationEvent;
 
 import java.util.function.Consumer;
 
