@@ -13,7 +13,7 @@
     </parent>
 
     <groupId>com.configly</groupId>
-    <artifactId>event-processing</artifactId>
+    <artifactId>configly-event-processing</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>configly-event-processing</name>
     <properties>
@@ -26,13 +26,13 @@
     <dependencies>
         <dependency>
             <groupId>com.configly</groupId>
-            <artifactId>contracts</artifactId>
+            <artifactId>configly-contracts</artifactId>
             <version>${contracts.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.configly</groupId>
-            <artifactId>model</artifactId>
+            <artifactId>configly-model</artifactId>
             <version>${model.version}</version>
         </dependency>
 
@@ -47,7 +47,7 @@
         </dependency>
         <dependency>
             <groupId>com.configly</groupId>
-            <artifactId>shared-web</artifactId>
+            <artifactId>configly-shared-web</artifactId>
             <version>${shared-web.version}</version>
         </dependency>
         <dependency>
