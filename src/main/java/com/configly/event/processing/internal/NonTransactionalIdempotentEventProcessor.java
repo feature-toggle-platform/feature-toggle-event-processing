@@ -1,12 +1,12 @@
 package com.configly.event.processing.internal;
 
+import com.configly.web.model.correlation.CorrelationId;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 import com.configly.contracts.shared.IntegrationEvent;
 import com.configly.event.processing.api.EventProcessor;
 import com.configly.event.processing.api.NonTransactionalProcessedEventRepository;
-import com.configly.web.correlation.CorrelationId;
 
 import java.util.function.Consumer;
 

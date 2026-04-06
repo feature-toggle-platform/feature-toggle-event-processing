@@ -1,9 +1,9 @@
 package com.configly.event.processing.api;
 
+import com.configly.web.model.correlation.CorrelationId;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import org.slf4j.MDC;
-import com.configly.web.correlation.CorrelationId;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public final class CorrelationScope {
